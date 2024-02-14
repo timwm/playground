@@ -7,6 +7,8 @@ COPY your-script.sh /app
 
 RUN pwd
 
+RUN ls -al
+
 RUN chmod +x /app/your-script.sh
 
 WORKDIR /app
