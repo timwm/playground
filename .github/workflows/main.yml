@@ -1,4 +1,4 @@
-ename: Execute Command and Push Result
+name: Execute Command and Push Result
 
 on:
   push:
