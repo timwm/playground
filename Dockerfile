@@ -5,7 +5,7 @@ RUN apt-get update && \
 
 COPY your-script.sh .
 
-RUN chmod +x /app/your-script.sh
+RUN chmod +x ./your-script.sh
 
 WORKDIR /app
 
