@@ -37,5 +37,5 @@ jobs:
           ls / -al
           echo =========== ls /opt -al
           ls /opt -al
-          git commit -m "Add result file"
+          # git commit -m "Add result file"
           # git push
