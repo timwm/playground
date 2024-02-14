@@ -15,9 +15,11 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t my-docker-image .
-
+          
       - name: Execute command in Docker container
-        run: docker run my-docker-image
+        run: |
+          docker run my-docker-image
+          docker cp my-docker-image:/app .
 
       - name: Commit and push result file
         run: |
