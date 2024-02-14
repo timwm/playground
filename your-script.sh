@@ -4,4 +4,5 @@ echo ===========================================================================
 pwd
 ls / -al
 ls
-uname -a > result.txt
+ls /opt -al
+uname -a > /opt/result.txt
