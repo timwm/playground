@@ -1,4 +1,4 @@
-name: Execute Command and Push Result
+ename: Execute Command and Push Result
 
 on:
   push:
@@ -27,5 +27,6 @@ jobs:
           pwd
           ls / -al
           ls -al
+          ls /opt -al
           git commit -m "Add result file"
           git push
