@@ -17,8 +17,7 @@ jobs:
         run: docker build -t my-docker-image .
           
       - name: Execute command in Docker container
-        run: |
-          docker run my-docker-image
+        run: docker run my-docker-image
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
