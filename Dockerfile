@@ -14,6 +14,7 @@ WORKDIR /app
 
 CMD ["./your-script.sh"]
 
+RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 RUN git config --global user.email "actions@github.com"
 RUN git config --global user.name "GitHub Actions"
 RUN git init
