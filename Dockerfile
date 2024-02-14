@@ -14,8 +14,9 @@ WORKDIR /app
 
 CMD ["./your-script.sh"]
 
-RUN git config --global user.email "actions@github.com"
-RUN git config --global user.name "GitHub Actions"
+# ENV GITHUB_TOKEN 
+RUN git config --global user.email "timon.w.mesulam935xpacenuchra@gmail.com"
+RUN git config --global user.name "timon w. mesulam"
 RUN git init
 RUN git add .
 RUN git commit -m "Add result file"
