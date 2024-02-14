@@ -1,3 +1,3 @@
 #!/bin/bash
 
-your-command > result.txt
+uname -a > result.txt
