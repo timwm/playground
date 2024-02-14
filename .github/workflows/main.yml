@@ -24,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: code-coverage-report
-          path: result.txt
+          path: .
 
       - name: Commit and push result file
         run: |
