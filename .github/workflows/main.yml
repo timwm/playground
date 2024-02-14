@@ -18,8 +18,13 @@ jobs:
           
       - name: Execute command in Docker container
         run: |
-          docker run my-docker-image --name=my-docker-image
-          docker cp my-docker-image:/app .
+          docker run my-docker-image
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-report
+          path: result.txt
 
       - name: Commit and push result file
         run: |
@@ -33,4 +38,4 @@ jobs:
           echo =========== ls /opt -al
           ls /opt -al
           git commit -m "Add result file"
-          git push
+          # git push
