@@ -28,7 +28,7 @@ jobs:
       - name: Download a single artifact
         uses: actions/download-artifact@v4
         with:
-          name: code-coverage-artifact
+          name: code-coverage-report
 
       - name: Commit and push result file
         run: |
