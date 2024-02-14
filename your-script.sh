@@ -6,5 +6,5 @@ ls -al
 echo ======== ls / -al
 ls / -al
 echo ======== ls /opt -al
-ls /opt -al
 uname -a > /opt/result.txt
+ls /opt -al
