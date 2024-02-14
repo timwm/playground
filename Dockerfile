@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update && \
-    apt-get install -y p7zip httrack
+    apt-get install -y p7zip httrack git
 
 COPY your-script.sh /app/
 
