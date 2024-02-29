@@ -1,0 +1,39 @@
+CodePen.IO follows
+jhey ▲🐻🎈
+@jh3yy
+CSS Trick ✨
+
+You can create this glitch hover effect by animating pseudoelement content 🎬
+
+button:hover span:after {
+  animation: flip 0.2s calc(var(--i) * 0.05s);
+}
+@​keyframes flip {
+20% { content: '_'; }
+40% { content: var(--c1); }
+60% { content: var(--c2); }
+}
+
+It's a funky little track that allows you to animate text flipping with CSS 🤙
+
+Leaning into custom properties, you can make each flip animation random with inline styles 🎨
+
+<button>
+  <span
+    style="--i: 0; --c1: 'x'; --c2: '$'; --c3: '≈';"
+  >C</span>
+  <span 
+    style="--i: 1; --c1: 'ç'; --c2: '&'; --c3: 'π';"
+  >l</span>
+  <!-- Other characters -->
+  <span class="sr-only">Click Me</span>
+</button>
+
+You make use of each character within the keyframes above. And "--i" communicates the index that you can use for the animation-delay 🙌
+
+That's all there is to it!
+
+As always, any requests or suggestions, hit me up! 🙏
+
+@CodePen
+ link below!
