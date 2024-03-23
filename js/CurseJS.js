@@ -1,9 +1,17 @@
-//@date Thu, 07-04-2019 20:45:09
-
+/*
+ * @author: timon w. mesulam
+ * @email: timon.w.mesulam935xpacenuchra@gmail.com
+ * @version: 0.0.7
+ * @licence:
+ * @date Thu, 07-04-2019 20:45:09
+ * @description:
+ */
 
 //$(function() {
 +function ( factory, root ) { "use stric";
 	
+    //if (!root[1]) throw("CurseJS requires JQuery to be defined!")
+
 	factory( root[ 0 ], root[ 1 ] );
 	
 }( function( window, env ) {
@@ -22,8 +30,7 @@ var
 		
 		protoCopy(this, E);
 		this.ctx = spec; // declare the context for use in E()
-		var i, r='';for (i in $)/*this.hasOwnProperty(i)?*/r+=i+': '+$[ i ]+'\n\n';//alert(curse+'\n\n\n\n'+r);
-		//alert(r);
+
 		//var i, r='';for (i in spec)/*spec.hasOwnProperty(i)?*/r+=i+': '+spec[ i ]+'\n\n';alert(spec+'\n\n\n\n'+r);
 		return this ;
 	};
@@ -128,9 +135,10 @@ var
 	 
 	function protoCopy( sub, sup ){
 		var _sup = sup.prototype;
-			typeof sub === 'function' ? sub.prototype = { _sup }['_sup'] : 0;
-			Object.setPrototypeOf ? Object.setPrototypeOf( sub, { _sup }['_sup'] ) :
-			sub.__proto__ = { _sup }['_sup'];
+			
+		if (typeof sub === 'function') sub.prototype = { _sup }['_sup'];
+
+		Object.setPrototypeOf ? Object.setPrototypeOf( sub, { _sup }['_sup'] ) : sub.__proto__ = { _sup }['_sup'];
 		//var i, r='';for (i in sub)r+=i+': '+sub[ i ]+'\n\n';alert(r);
 	}
  
@@ -169,12 +177,13 @@ var
 	 
 	 
 	 
-	 if ( env ){
+	if ( env ){
 		//alert( $ );
-	$.fn['curse'] = function(  ){
-			
+		$.fn['curse'] = function(  ){	
 	}}
+
 	window[ plugin ] = curse;
+	
 	return curse;
 	
 }, [ 
@@ -191,15 +200,16 @@ DOCUMENTATION (defacto).[ key concepts ]
 
 ________________________________________________________________________________________
 
+Traverse JavaScript objects (objects and arrays) with added power to fire custom events s you go.
 
 
-— Fordata and handlers in cache to be executed, you'll need to invoke the .emit() method with type,
+— For data and handlers in cache to be executed, you'll need to invoke the .emit() method with type,
   optional hander and or -deep- parameters to it.
-  Alldata stored for specific or all registerd -type-s can optionally pass through a given handler
+  All data stored for specific or all registerd -type-s can optionally pass through a given handler
   before being executed by its bond handler as described below.
 
 — NOTE:
-  -tALWAYS the event type is sent as last and indices as first argmuments to the cached methods when
+  -ALWAYS the event type is sent as last and indices as first argmuments to the cached methods when
   the .fire() method is invoked for that specific event type.
   -If you supply a function as 1st or 2nd argmument to .emit(), it will be feed with the
   current indicies, key-value pairs of the object or array in context, and all handlers

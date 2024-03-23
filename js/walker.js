@@ -26,46 +26,49 @@ var walker = function (ctx, callbacks, data, options) {
 
 	var that = ctx,
 	{ onNestChange, deep } = options,
-	j = 0,
+	j = -1,
 
 	w = function (ctx){
 		console.log({ctx})
 		// Call `options.onNestChange(curIndx, prevIndx, curSubIndx, prevSubIndx, curKey, curCtx)`
-		if (j) onNestChange(j+1, aj_, 0, ai-1, 0, k, ctx)
+		//if (j) onNestChange(j+1, aj_, 0, ai-1, 0, k, ctx)
 
-		var 
-		var k, ai = 0, arr = [j, -1], aj_ = j++;
+		var k, ai = -1, aj_ = j++, arr = [aj_, -1];
 		//if (!aj_) that = ctx; // aj_ === 0 only twice; At the start and end.
 		
 		for ( k in ctx ){
+			console.log(':: ', k, ctx[k])
 		
-			i = 0; arr[1] =  ++ai;
-			while (callbacks[ i ]) {
-				callbacks[ i++ ].call( that, [j,ai-1], k, ctx[ k ], data );
+			i = -1; ai++;
+			while (callbacks[ ++i ]) {
+				callbacks[ i ].call( that, [aj_,j, ai], k, ctx[ k ], data );
 			}
 			// Use -typeof ctx[k]==='object'- to match both objects and arrays.
 			// Implicit deep === true|false
-			if ( deep > 0 && ( typeof deep === 'number' || deep === true )
-				&& typeof ctx[ k ] === 'object'
-			)
-				strategy.run(ctx[ k ], callbacks, data, deep = Math.abs( deep ) - 1 );
+			if (deep && typeof ctx[ k ] === 'object')
+				strategy.run(ctx[ k ], callbacks, data, --deep );
 
 			//arr.splice( aj_ );
 		}
-		strategy.onNestChange(j, )
+		console.log('onNestChange: ',{aj_,j,ai,ctx,deep})
+		strategy.onNestChange(aj_, j, ai, )
 		//arr[0] = j--;
 		j--;
 	},
 
 	_strategy = {
 		'bredth-first': function () {
-			var nested = false, values = {};
+			var nested, values = {};
 			return {
-				run: v => {console.log('<<<: ', {j,v,values,arguments});values[j] ? values[j].push(v) : values[j] = [v]},
+				run: v => {
+					nested = j
+					console.log('<<<: ', {j,v,values,arguments});
+					values[j] ? values[j].push(v) : values[j] = [v]
+				},
 				onNestChange: function () {
-					console.log('>>>: ',{j,nested,values})
-					if (!nested) {
-						nested = true
+					console.log('>>>: ',{j,nested,values,arguments})
+					if (nested == j){
+						//nested = j
 						for (v of values[j]) w(v);
 						// avoid memory leaks
 						delete values[j]
@@ -89,6 +92,7 @@ var walker = function (ctx, callbacks, data, options) {
 		if (typeof callbacks[ i ] !== 'function') callbacks.splice( i, 1 );
 
 	if (callbacks.length && ctx && typeof ctx === 'object') // Don't iterate non-objects eg strings.
+		deep = typeof deep === 'number' ? (deep >= 0 ? deep : 0) : (!!deep ? -1 : 0)
 		w(ctx)
 };
 
@@ -96,10 +100,11 @@ var walker = function (ctx, callbacks, data, options) {
 var ctx = {
 	spam: 3, foo: 'life',
 	m: {
-		m0: 'zero',
+		m0: { zero: 'zero' },
 		m2: 'two',
-	}
+	},
+	ham: true,
 },
 arr = [ 'baz', 'bar' ],
 abc = er = 0;
-walker(ctx, [function(){console.log({...arguments})}],['data', 'ta'])
+walker(ctx, [function(){/*console.log({...arguments})*/}],['data', 'ta'], {onNestChange:function(){/*console.log(arguments)*/}})
