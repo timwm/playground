@@ -1,0 +1,21 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# 
+# Java 8
+cmd=${0##*/}
+
+if [ "$cmd" == "native2ascii" ]; then
+    unset PRELOAD
+else
+    unset LD_PRELOAD
+fi
+
+export BASE_DIR="/data/data/com.termux/files/usr/share"
+export JAVA_HOME="${JAVA_HOME:-$_011_CHROOT/opt/java/jdk8}"
+
+export LD_LIBRARY_PATH="$_011_CHROOT/opt/java/glib"
+export LIB_DIR="$LD_LIBRARY_PATH"
+if [ "$cmd" == "javah" ]; then
+    export LIB_DIR="$BASE_DIR/gnulib"
+fi
+
+"$JAVA_HOME/bin/$cmd" "$@"
