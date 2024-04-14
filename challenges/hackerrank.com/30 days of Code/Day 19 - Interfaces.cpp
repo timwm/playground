@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <numeric> // accumulator
 using namespace std;
 class AdvancedArithmetic{
     public:
@@ -22,15 +23,18 @@ public:
         int second_lower = n;
         vector<int> divisors;
 
-        while (first_upper < second_lower) {
-            if (first_upper % second_lower == 0) {
+        for (; first_upper < second_lower; first_upper++) {
+            if (n % first_upper == 0) {
+                second_lower = n / first_upper;
                 divisors.push_back(first_upper);
+                if (second_lower == first_upper)
+                    break;
                 divisors.push_back(second_lower);
             }
-            first_upper++;
-            second_lower /= first_upper;
         }
-        return 0;
+
+        auto sum = first_upper == 1 ? 1 : accumulate(divisors.begin(), divisors.end(), 0);
+        return sum;
     }
 };
 
