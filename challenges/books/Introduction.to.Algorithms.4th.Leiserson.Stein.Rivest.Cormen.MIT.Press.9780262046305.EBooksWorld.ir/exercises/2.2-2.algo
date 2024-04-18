@@ -1,0 +1,15 @@
+// NOTE: Arrays are 1-indexed as specified in the book unless otherwise stated.
+
+for i = 2 to n
+    // Get min in A[i:n]
+    j = i
+    smallest = i - 1
+    while j <= n
+        if A[j] < A[smallest]
+            smallest = j
+        j = j + 1
+    // Swap them
+    if smallest > i - 1
+       key = A[i - 1]
+       A[i - 1] = A[smallest]
+       A[smallest] = key
