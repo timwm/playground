@@ -17,9 +17,9 @@ Anyway `ssh` wasn't on the menu today, let's get started. This is just an altern
 Project IDX uses nix as its package manager, so we'll need to create a `.idx/.dev.nix` file
 in your IDX workspace so that docker is installed in it.
 
-## Step 1: On Your Remote machine (project idx in our case)
+## Step 1: On Your Remote machine (project IDX in our case)
 
-### 1.a) Creating a `.idx/dev.nix` (Skip if not using IDX)
+### 1.a) Creating a `.idx/dev.nix` (Skip if not using project IDX)
 
 Create a new workspace (You can choose any template) and follow the prompts.
 <br/>
@@ -168,8 +168,12 @@ Specify the connection url in your colab
 <p align="center" width="100%">
   <img src="colab-connection-prompt.webp"> 
 </p>
+<br/>
 
-Now open a new browser tab on your local machine and vist `http://localhost:8888?lab?token=jupyterlab`
+Viola! And we're done here. Next!
+<br/>
+
+You can open a new browser tab on your local machine and vist `http://localhost:8888/lab?token=jupyterlab` to test the lab.
 <br/>
 
 **NOTE:**
@@ -185,5 +189,3 @@ Now open a new browser tab on your local machine and vist `http://localhost:8888
       <img src="jupyter-token-prompt.png"> 
     </p>
     <br/>
-
-Viola! And we're done here. Next!
