@@ -63,7 +63,7 @@ recipient_delimiter = +
 #relayhost = [gateway.example.com]
 #relayhost = [ip.add.re.ss]:port
 #relayhost = uucphost
-relayhost = 
+# relayhost = 
 
 # Where to look for Cyrus SASL configuration files.  Upstream default is unset
 # (use compiled-in SASL library default), Debian Policy says it should be
@@ -103,9 +103,9 @@ myhostname = mail.localhost.io
 #myorigin = localhost.io
 #O11 myorigin = $mydomain
 
-# maillog_file_prefixes = /dev/null
-# maillog_file = /dev/null
-maillog_file = /var/log/postfix.log
+maillog_file_prefixes = /dev/null
+maillog_file = /dev/null
+# maillog_file = /var/log/postfix.log
 
 # alias_maps = hash:/etc/aliases
 # alias_database = hash:/etc/aliases
@@ -125,4 +125,13 @@ virtual_gid_maps = static:43210
 # Use Dovecot for local delivery
 # mailbox_transport = lmtp:unix:private/dovecot-lmtp
 # mailbox_transport_maps = 
+
+# Configure SMTP relay host
+relayhost=[smtp.gmail.com]:587
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_use_tls = yes
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+
 #O11:E
