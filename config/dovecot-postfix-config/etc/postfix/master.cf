@@ -1,0 +1,15 @@
+submission inet n       -       y       -       -       smtpd
+  -o syslog_name=postfix/submission
+  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject
+  -o milter_macro_daemon_name=ORIGINATING
+
+# O11:B
+# smtps     inet  n       -       y       -       -       smtpd
+#   -o syslog_name=postfix/smtps
+#   -o smtpd_tls_wrappermode=yes
+#   -o smtpd_sasl_auth_enable=yes
+#   -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject
+#   -o milter_macro_daemon_name=ORIGINATING
+# O11:E
