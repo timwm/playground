@@ -1,0 +1,11 @@
+$ tree /var/vmail -pug
+
+[drwxr-xr-x root     root    ]  /var/vmail
+└── [drwxr-xr-x root     root    ]  localhost.io
+    ├── [drwxr-xr-x 43210    43210   ]  admin
+    ├── [drwxrwxrwx root     root    ]  etc
+    │   ├── [-rw-r--r-- root     root    ]  passwd
+    │   └── [-rw-r--r-- root     root    ]  shadow
+    └── [drwxr-xr-x 43210    43210   ]  info
+
+5 directories, 2 files

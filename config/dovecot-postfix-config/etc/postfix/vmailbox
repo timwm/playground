@@ -1,0 +1,5 @@
+# info@example.com    example.com/info
+# sales@example.com   example.com/sales/
+# @example.com      example.com/catchall
+admin@localhost.io localhost.io/home/admin/Maildir/
+info@localhost.io localhost.io/home/info/Maildir/
