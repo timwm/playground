@@ -96,6 +96,7 @@ smtpd_tls_key_file=/usr/share/O11/certs/localhost.io.key
 #myorigin = localhost.io
 #O11 myorigin = $mydomain
 
+# maillog_file_prefixes = /dev/null
 # maillog_file = /dev/null
 # maillog_file = /var/log/postfix.log
 
