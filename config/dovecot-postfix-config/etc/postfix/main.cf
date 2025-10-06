@@ -84,13 +84,20 @@ smtp_tls_security_level = may
 # SMTP Client TLS session cache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
-myhostname = cactus.mak.ac.ug
+# myhostname = cactus.mak.ac.ug
 inet_interfaces = all
 
 #011:B
 smtpd_tls_cert_file=/usr/share/O11/certs/localhost.io.crt
 smtpd_tls_key_file=/usr/share/O11/certs/localhost.io.key
-#myhostname = localhost.io
+
+smtpd_tls_auth_only = yes
+# Using this since our dovecot config has the username/password
+# (system or virtual users) cofig mapping
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+myhostname = mail.localhost.io
 # or cactus
 #mydomain = mail.localhost.io
 #myorigin = localhost.io
@@ -98,7 +105,7 @@ smtpd_tls_key_file=/usr/share/O11/certs/localhost.io.key
 
 # maillog_file_prefixes = /dev/null
 # maillog_file = /dev/null
-# maillog_file = /var/log/postfix.log
+maillog_file = /var/log/postfix.log
 
 # alias_maps = hash:/etc/aliases
 # alias_database = hash:/etc/aliases
@@ -116,6 +123,6 @@ virtual_uid_maps = static:43210
 virtual_gid_maps = static:43210
 
 # Use Dovecot for local delivery
-mailbox_transport = lmtp:unix:private/dovecot-lmtp
+# mailbox_transport = lmtp:unix:private/dovecot-lmtp
 # mailbox_transport_maps = 
 #O11:E
