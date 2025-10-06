@@ -1,8 +1,9 @@
-## You may need to generate virtaul alias and mailbox databases by running:
+## You may need to generate sasl_passwd, virtaul alias and mailbox databases by running:
 
 ```sh
 sudo postmap /etc/postfix/vmailbox
 sudo postmap /etc/postfix/valiases
+sudo postmap /etc/postfix/sasl_passwd
 ```
 
 ## Start both dovecot and postfix:
