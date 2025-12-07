@@ -19,7 +19,8 @@ for f in $SRC/*; do
     file="${f##*/}";
     #printf '\n\n%s\n' "[ $I ] compressing: $file";
     echo $f
-    ffmpeg -i "$f" -acodec libvorbis -vn -b:a 48k -ar 44100 -ac 1 "$DEST/${file%.*}.ogg";
+    # ffmpeg -i "$f" -acodec libvorbis -vn -b:a 48k -ar 44100 -ac 1 "$DEST/${file%.*}.ogg";
+    ffmpeg -i "$f" -acodec libopus -vn -b:a 48k -ar 48000 -ac 1 "$DEST/${file%.*}.opus";
     I=$(($i + 1));
 done
 printf "\ncompressed $I file(s) from $SRC to $DEST\n\n";
